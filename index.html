@@ -1,0 +1,83 @@
+<!-- splash.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Psuedolingo</title>
+  <style>
+    @font-face {
+        font-family: "Dingos Stamp";
+        src: url("fonts/Dingos-Stamp_Black.otf") format("truetype");
+    }
+
+    body {
+      background-color: #8E44FF;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    /* Loading screen */
+    .loading-body {
+    background-color: #8d54ff;
+    color: white;
+    }
+
+    .loading-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 3rem;
+        font-family: 'Dingos Stamp', sans-serif;
+        color: #fbf9fd;
+        font-weight: 600;
+        margin-bottom: 40px;
+    }
+
+    .loader {
+        width: 100px;
+        aspect-ratio: 2;
+        --_g: no-repeat radial-gradient(circle closest-side,#fff 90%,#8d54ff);
+        background: 
+            var(--_g) 0%   50%,
+            var(--_g) 50%  50%,
+            var(--_g) 100% 50%;
+        background-size: calc(100%/3) 50%;
+        animation: l3 1s infinite linear;
+    }
+
+    @keyframes l3 {
+        20%{background-position:0%   0%, 50%  50%,100%  50%}
+        40%{background-position:0% 100%, 50%   0%,100%  50%}
+        60%{background-position:0%  50%, 50% 100%,100%   0%}
+        80%{background-position:0%  50%, 50%  50%,100% 100%}
+    }
+  </style>
+</head>
+<body class="loading-body">
+  <div class="loading-container">
+    <h1 class="logo">Psuedolingo</h1>
+    <div class="loader"></div>
+  </div>
+
+  <script>
+    // Only redirect after loading if on the loading screen
+    if (document.body.classList.contains("loading-body")) {
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 5000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+  <title>Pseudolingo App</title>
+  <script src="https://kit.fontawesome.com/e31b8a103c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <main class="main-content">
+
+    <!-- Mobile menu toggle button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay"></div>
+    <aside id="sidebar">
+              
+              <div class="logo">Psuedolingo</div>
+              <nav>
+                  <ul>
+                      <li><a href="" class="active">Create</a></li>
+                      <li><a href="" class="active">Learn</a></li>
+                      <li><a href="" class="active">Dictionary</a></li>
+                      <li><a href="" class="active">Decoder</a></li>
+                  </ul>
+              </nav>
+              <div class="toggle-button">
+                  <input type="checkbox" class="theme-checkbox" id="themeToggle">
+              </div>
+    </aside>
+
+    <section class="container">
+      <div class="container1">
+        <label for="sentence">Enter a sentence:</label>
+        <input type="text" id="sentence" placeholder="Type something..." />
+
+        <label for="style">Choose a language style:</label>
+        <select id="style">
+          <option value="">-- Select Style --</option>
+          <option value="elvish">Elvish</option>
+          <option value="dwarven">Dwarven</option>
+          <option value="alien">Alien</option>
+          <option value="mystical">Mystical</option>
+          <option value="robotic">Robotic</option>
+          <option value="korean">Korean</option>
+          <option value="chinese">Chinese</option>
+          <option value="japanese">Japanese</option>
+          <option value="ancient">Ancient</option>
+        </select>
+
+        <label for="structure">Choose a syllable structure:</label>
+        <select id="structure">
+          <option value="">-- Select Structure --</option>
+          <option value="cv">CV (consonant-vowel)</option>
+          <option value="cvc">CVC</option>
+          <option value="vc">VC</option>
+          <option value="cvvc">CVVC</option>
+          <option value="random">Random</option>
+        </select>
+
+        <button id="generate">Generate</button>
+      </div>
+
+      <div class="container2">
+        <label for="output">Generated Language:</label>
+        <textarea id="output" readonly></textarea>
+      </div>
+    </section>
+  </main>
+  <script src="script.js">
+  </script>
+</body>
+</html>
