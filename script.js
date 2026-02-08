@@ -67,7 +67,7 @@ document.getElementById("generate").addEventListener("click", () => {
 
   // Placeholder generation logic
   const output = document.getElementById("output")
-  output.value = `Generated ${style} text with ${structure} structure: ${generatePseudoText(sentence, style, structure)}`
+  output.value = `${generatePseudoText(sentence, style, structure)}`
 })
 
 // Simple pseudo text generation function
@@ -104,3 +104,4 @@ function generatePseudoText(sentence, style, structure) {
     })
     .join(" ")
 }
+
