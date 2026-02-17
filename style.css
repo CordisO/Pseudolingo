@@ -6,6 +6,41 @@
   src: url("fonts/Dingos-Stamp_Black.otf") format("truetype");
 }
 
+:root {
+  --primary: #8d54ff;
+  --primary-dark: #732dcc;
+  --bg: #f0f2f5;
+  --sidebar-bg: #ffffff;
+  --card-bg: #ffffff;
+  --text: #732dcc;
+  --text-light: #636e72;
+  --sidebar-text: #636e72;
+  --text-active: #ffffff;
+  --menu-color: #8d54ff;
+  --button-bg: #8d54ff;
+  --button-text: #ffffff;
+  --button-shadow: 0 6px 0px var(--primary-dark);
+  --shadow-flat: 4px 4px 0px rgba(0,0,0,0.1);
+  --shadow-3d: 0 6px 0px var(--primary-dark);
+  --shadow-3d-active: 0 2px 0px var(--primary-dark);
+}
+
+body.darktheme {
+  --bg: #f0f2f5;
+  --primary: #ffffff;
+  --primary-light: #ffffff;
+  --sidebar-bg: #8d54ff;
+  --card-bg: #8d54ff;
+  --text: #e9ecef;
+  --text-light: #8d54ff;
+  --sidebar-text: #ffffff;
+  --text-active: #8d54ff;
+  --menu-color: #8d54ff;
+  --button-bg: #ffffff;
+  --button-text: #8d54ff;
+  --button-shadow: 0 6px 0px #d6cece;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,8 +50,8 @@
 
 body {
   margin: 0;
-  background-color: #8d54ff;
-  color: white;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: "Balsamiq Sans", sans-serif;
 }
 
@@ -36,21 +71,33 @@ body {
   position: fixed;
   top: 1rem;
   left: 1rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--menu-color);
   border: none;
-  color: #8d54ff;
-  font-size: 1.5rem;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
   z-index: 1100;
   padding: 0.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: auto; /* ✅ ADDED: Ensure it's not full width */
+  width: auto;
 
 }
 
-.menu-toggle:hover {
-  background: white;
+.btn-3d {
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--shadow-3d);
+  transform: translateY(-4px);
+  margin-top: 1rem;
+  position: relative;
+  padding: 15px 25px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.btn-3d:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3d-active);
 }
 
 /* Mobile overlay */
@@ -74,7 +121,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: var(--sidebar-bg);
   position: sticky;
   top: 0;
   padding: 2rem 1rem;
@@ -84,7 +131,7 @@ body {
 .logo {
   font-size: 1.6rem;
   font-family: "Dingos Stamp", sans-serif;
-  color: #732dcc;
+  color: var(--primary);
   font-weight: 600;
   margin-bottom: 3rem;
 }
@@ -105,25 +152,20 @@ body {
 
 #sidebar nav a {
   display: block;
-  padding: 0.8rem 1rem;
-  color: white;
-  font-size: 1.2rem;
-  font-family: "Alata", sans-serif;
   text-decoration: none;
-  width: 100%;
+  color: var(--sidebar-text);
+  padding: 12px 18px;
+  display: block;
   border-radius: 12px;
-  background-color: #a278f3;
+  font-family: 'Balsamiq', sans-serif;
+  font-weight: 600;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#sidebar nav a:hover {
-  background-color: #5d32b2;
-  border-radius: 30px;
-  transform: scale(1.05);
-}
-
-#sidebar nav a.active {
-  background-color: #5d32b2;
+#sidebar nav a:hover, #sidebar nav a.active {
+  background: var(--primary);
+  color: var(--text-active);
+  transform: translateX(5px);
 }
 
 .theme-checkbox {
@@ -174,17 +216,21 @@ body {
 }
 
 .container1 {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 20px;
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
   margin-bottom: 2rem;
 }
 
 .container2 {
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 1.5rem;
   border-radius: 20px;
 }
+
+.container2 { color: #636e72; }
 
 label,
 select,
@@ -199,26 +245,75 @@ textarea {
   color: #8e44ff;
 }
 
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 input,
 select,
 textarea {
-  padding: 0.75rem;
-  border: 1px solid #8e44ff;
-  border-radius: 8px;
+  width: 100%;
+  padding: 15px;
+  border: 2px solid rgba(0,0,0,0.05);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text-light);
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  background: var(--bg);
+}
+
+.container1 select {
+  color: var(--text-light);
+}
+
+.container1 input {
+  color: var(--text-active);
+}
+
+.container1 select option {
+  color: #1a1a2e;
 }
 
 button {
-  background-color: #8e44ff;
-  color: white;
+  background: var(--button-bg);
+  color: var(--button-text);
   border: none;
-  padding: 0.75rem;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 15px 25px;
+  border-radius: 12px;
   font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--button-shadow);
+  transform: translateY(-4px);
+  width: 100%;
+  margin-top: 1rem;
+  position: relative;
 }
 
-button:hover {
-  background-color: #732dcc;
+button::after {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3d-active);
+}
+
+button::before {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3d-active);
+}
+
+button:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3d-active);
 }
 
 textarea {
@@ -275,6 +370,8 @@ textarea {
     margin-right: 0;
   }
 }
+
+
 
 /* Tablet adjustments */
 @media (max-width: 1024px) and (min-width: 769px) {
