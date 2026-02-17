@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="pseudolingo-icon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <title>Pseudolingo App</title>
   <script src="https://kit.fontawesome.com/e31b8a103c.js" crossorigin="anonymous"></script>
@@ -12,7 +13,7 @@
   <main class="main-content">
 
     <!-- Mobile menu toggle button -->
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <button class="menu-toggle btn-3d" aria-label="Toggle menu">
       <i class="fa-solid fa-bars"></i>
     </button>
 
@@ -23,10 +24,10 @@
               <div class="logo">Psuedolingo</div>
               <nav>
                   <ul>
-                      <li><a href="" class="active">Create</a></li>
-                      <li><a href="" class="active">Learn</a></li>
-                      <li><a href="" class="active">Dictionary</a></li>
-                      <li><a href="" class="active">Decoder</a></li>
+                      <li><a href="main.html" class="active"><i class="fa-solid fa-wand-magic-sparkles"></i> Create</a></li>
+                      <li><a href="#"><i class="fa-solid fa-book-open"></i> Learn</a></li>
+                      <li><a href="#"><i class="fa-solid fa-spell-check"></i> Dictionary</a></li>
+                      <li><a href="#"><i class="fa-solid fa-microchip"></i> Decoder</a></li>
                   </ul>
               </nav>
               <div class="toggle-button">
@@ -37,11 +38,11 @@
     <section class="container">
       <div class="container1">
         <label for="sentence">Enter a sentence:</label>
-        <input type="text" id="sentence" placeholder="Type something..." />
+        <input type="text" id="sentence" placeholder="e.g. The stars are beautiful tonight" />
 
-        <label for="style">Choose a language style:</label>
+    
+        <label>Archetype Style</label>
         <select id="style">
-          <option value="">-- Select Style --</option>
           <option value="elvish">Elvish</option>
           <option value="dwarven">Dwarven</option>
           <option value="alien">Alien</option>
@@ -55,24 +56,28 @@
 
         <label for="structure">Choose a syllable structure:</label>
         <select id="structure">
-          <option value="">-- Select Structure --</option>
           <option value="cv">CV (consonant-vowel)</option>
-          <option value="cvc">CVC</option>
+          <option value="cvc">CVC (standard)</option>
           <option value="vc">VC</option>
           <option value="cvvc">CVVC</option>
           <option value="random">Random</option>
         </select>
 
-        <button id="generate">Generate</button>
+        <button id="generate">GENERATE</button>
       </div>
 
       <div class="container2">
         <label for="output">Generated Language:</label>
         <textarea id="output" readonly></textarea>
       </div>
+      <button id="copyBtn">
+          COPY TO CLIPBOARD
+      </button>
     </section>
+
   </main>
   <script src="script.js">
   </script>
+  <script src="toggle.js"></script>
 </body>
 </html>
