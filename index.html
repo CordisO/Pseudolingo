@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="pseudolingo-icon.png" type="image/png">
-  <title>Psuedolingo</title>
+  <link rel="icon" href="/assets/image/pseudolingo-logo.png" type="image/png">
+  <title>Pseudolingo</title>
   <style>
     @font-face {
         font-family: "Dingos Stamp";
-        src: url("fonts/Dingos-Stamp_Black.otf") format("truetype");
+        src: url("/assets/fonts/Dingos-Stamp_Black.otf") format("truetype");
     }
+    @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
     body {
-      background-color: #8E44FF;
-      color: white;
-      font-family: 'Arial', sans-serif;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #8d54ff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -26,8 +26,8 @@
 
     /* Loading screen */
     .loading-body {
-    background-color: #8d54ff;
-    color: white;
+    background-color: white;
+    color: #8d54ff;
     }
 
     .loading-container {
@@ -38,18 +38,31 @@
         align-items: center;
     }
 
+    .logo-img {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.3));
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
     .logo {
         font-size: 3rem;
         font-family: 'Dingos Stamp', sans-serif;
-        color: #fbf9fd;
+        color: #8d54ff;
         font-weight: 600;
         margin-bottom: 40px;
+        -webkit-text-stroke: 2px #5a30ad;
     }
 
     .loader {
         width: 100px;
         aspect-ratio: 2;
-        --_g: no-repeat radial-gradient(circle closest-side,#fff 90%,#8d54ff);
+        --_g: no-repeat radial-gradient(circle closest-side,#8d54ff 90%,#fff);
         background: 
             var(--_g) 0%   50%,
             var(--_g) 50%  50%,
@@ -65,7 +78,19 @@
         80%{background-position:0%  50%, 50%  50%,100% 100%}
     }
 
+    .tagline {
+        font-size: 1rem;
+        color: #8d54ff;
+        margin-top: 20px;
+        font-family: 'Balsamiq Sans', sans-serif;
+    }
+
     @media (max-width: 600px) {
+        .logo-img {
+            width: 80px;
+            height: 80px;
+        }
+
         .logo {
             font-size: 2rem;
         }
@@ -73,13 +98,19 @@
         .loader {
             width: 70px;  
         }
+
+        .tagline {
+            font-size: 0.85rem;
+        }
     }
   </style>
 </head>
 <body class="loading-body">
   <div class="loading-container">
-    <h1 class="logo">Psuedolingo</h1>
+    <img src="/assets/image/logo.png" alt="Pseudolingo Logo" class="logo-img">
+    <h1 class="logo">Pseudolingo</h1>
     <div class="loader"></div>
+    <p class="tagline">Create your own fantasy languages</p>
   </div>
 
   <script>
@@ -87,7 +118,7 @@
     if (document.body.classList.contains("loading-body")) {
         setTimeout(() => {
             window.location.href = "main.html";
-        }, 5000);
+        }, 3000);
     }
   </script>
 </body>
