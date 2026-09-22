@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="pseudolingo-icon.png" type="image/png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/assets/image/logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
   <title>Pseudolingo App</title>
   <script src="https://kit.fontawesome.com/e31b8a103c.js" crossorigin="anonymous"></script>
 </head>
@@ -21,13 +21,16 @@
     <div class="mobile-overlay"></div>
     <aside id="sidebar">
               
-              <div class="logo">Psuedolingo</div>
+              <div class="logo-container">
+                <img src="assets/image/logo.png" alt="Pseudolingo Logo" class="logo-img">
+                <div class="logo">Pseudolingo</div>
+              </div>
               <nav>
                   <ul>
                       <li><a href="main.html" class="active"><i class="fa-solid fa-wand-magic-sparkles"></i> Create</a></li>
-                      <li><a href="#"><i class="fa-solid fa-book-open"></i> Learn</a></li>
-                      <li><a href="#"><i class="fa-solid fa-spell-check"></i> Dictionary</a></li>
-                      <li><a href="#"><i class="fa-solid fa-microchip"></i> Decoder</a></li>
+                      <li><a href="#" onclick="showSection('learn-section')"><i class="fa-solid fa-book-open"></i> Learn</a></li>
+                      <li><a href="#" onclick="showSection('dictionary-section')"><i class="fa-solid fa-spell-check"></i> Dictionary</a></li>
+                      <li><a href="#" onclick="showSection('decoder-section')"><i class="fa-solid fa-microchip"></i> Decoder</a></li>
                   </ul>
               </nav>
               <div class="toggle-button">
@@ -35,7 +38,7 @@
               </div>
     </aside>
 
-    <section class="container">
+    <section class="container" id="create-section">
       <div class="container1">
         <label for="sentence">Enter a sentence:</label>
         <input type="text" id="sentence" placeholder="e.g. The stars are beautiful tonight" />
@@ -43,24 +46,24 @@
     
         <label>Archetype Style</label>
         <select id="style">
-          <option value="elvish">Elvish</option>
-          <option value="dwarven">Dwarven</option>
-          <option value="alien">Alien</option>
-          <option value="mystical">Mystical</option>
-          <option value="robotic">Robotic</option>
-          <option value="korean">Korean</option>
-          <option value="chinese">Chinese</option>
-          <option value="japanese">Japanese</option>
-          <option value="ancient">Ancient</option>
+          <option value="elvish">Elvish (Flowing, melodic)</option>
+          <option value="dwarven">Dwarven (Harsh, strong)</option>
+          <option value="alien">Alien (Exotic, strange)</option>
+          <option value="mystical">Mystical (Magical, arcane)</option>
+          <option value="robotic">Robotic (Mechanical, numeric)</option>
+          <option value="korean">Korean (Soft, rhythmic)</option>
+          <option value="chinese">Chinese (Tonal, concise)</option>
+          <option value="japanese">Japanese (Gentle, polite)</option>
+          <option value="ancient">Ancient (Classical, timeless)</option>
         </select>
 
         <label for="structure">Choose a syllable structure:</label>
         <select id="structure">
-          <option value="cv">CV (consonant-vowel)</option>
-          <option value="cvc">CVC (standard)</option>
-          <option value="vc">VC</option>
-          <option value="cvvc">CVVC</option>
-          <option value="random">Random</option>
+          <option value="cvc">CVC (standard - balanced)</option>
+          <option value="cv">CV (simple - flowing)</option>
+          <option value="vc">VC (soft - vowel-led)</option>
+          <option value="cvvc">CVVC (complex - elaborate)</option>
+          <option value="random">Random (varied - natural)</option>
         </select>
 
         <button id="generate">GENERATE</button>
@@ -68,16 +71,161 @@
 
       <div class="container2">
         <label for="output">Generated Language:</label>
-        <textarea id="output" readonly></textarea>
+        <textarea id="output" readonly placeholder="Your translated text will appear here..."></textarea>
       </div>
       <button id="copyBtn">
           COPY TO CLIPBOARD
       </button>
     </section>
 
+    <div id="dictionary-section" class="content-section" style="display: none;">
+      <div class="container1">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-spell-check"></i> Your Vocabulary</h2>
+          <p class="section-desc">All your generated words are saved here automatically.</p>
+        </div>
+        <div class="dictionary-grid">
+          <div class="dict-header">Original</div>
+          <div class="dict-header">Pseudo</div>
+          <div class="dict-header">Style</div>
+        </div>
+        <button onclick="clearVocabulary()" class="clear-btn">
+          <i class="fa-solid fa-trash"></i> Clear Vocabulary
+        </button>
+      </div>
+    </div>
+
+    <div id="learn-section" class="content-section" style="display: none;">
+      <div class="container1">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-book-open"></i> Language Guide</h2>
+          <p class="section-desc">Learn about each language archetype.</p>
+        </div>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-leaf"></i> Elvish</h3>
+            <p>Flowing, melodic language with soft consonants and elegant vowel combinations. Features sounds like 'th', 'ph', 'ae', and 'iel'.</p>
+            <span class="example">Example: "Aelara thiel"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-hammer"></i> Dwarven</h3>
+            <p>Harsh, guttural language with hard consonants and short vowels. Features clusters like 'gr', 'dr', 'kr' and endings like 'ak', 'uk'.</p>
+            <span class="example">Example: "GRONDAK MURK"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-rocket"></i> Alien</h3>
+            <p>Exotic and strange with unusual consonants like 'x', 'z', 'q' and extended vowels. Creates truly otherworldly sounds.</p>
+            <span class="example">Example: "xraazu kxeev"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-wand-sparkles"></i> Mystical</h3>
+            <p>Arcane and magical with breathy sounds like 'sh', 'th', 'ph' and mystical vowel combinations. Perfect for spells.</p>
+            <span class="example">Example: "Shaelaeth Mhor"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-robot"></i> Robotic</h3>
+            <p>Mechanical and precise with numeric elements and sharp consonants. Features endings like '-tron', '-bot', '-oid'.</p>
+            <span class="example">Example: "KRIPT-0 TRON-X9"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-yin-yang"></i> Korean</h3>
+            <p>Soft, rhythmic language with distinct consonant groups and flowing vowels. Features double consonants like 'kk', 'tt', 'pp'.</p>
+            <span class="example">example: "gamsa hamnida"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-dragon"></i> Chinese</h3>
+            <p>Tonal and concise with specific consonant initials and rich vowel finals. Features sounds like 'zh', 'ch', 'sh', 'ang', 'eng'.</p>
+            <span class="example">example: "zhongwen hao"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-torii-gate"></i> Japanese</h3>
+            <p>Gentle and polite with simple syllable structure and soft endings. Features combinations like 'ky', 'sh', 'ch', 'ny'.</p>
+            <span class="example">example: "konnichiwa desu"</span>
+          </div>
+          <div class="guide-card">
+            <h3><i class="fa-solid fa-landmark"></i> Ancient</h3>
+            <p>Classical and timeless with Greek/Latin influences. Features aspirated consonants like 'th', 'ph', 'kh' and Latin endings.</p>
+            <span class="example">Example: "Philemon Aurelius"</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="decoder-section" class="content-section" style="display: none;">
+      <div class="container1">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-microchip"></i> Reverse Decoder</h2>
+          <p class="section-desc">Enter a pseudo-word to find its original meaning from your vocabulary.</p>
+        </div>
+        <label for="decode-input">Enter pseudo-word:</label>
+        <input type="text" id="decode-input" placeholder="e.g. Aelara" />
+        <button onclick="decodeWord()">
+          <i class="fa-solid fa-magnifying-glass"></i> DECODE
+        </button>
+        <div id="decode-result" class="decode-result"></div>
+      </div>
+    </div>
+
   </main>
-  <script src="script.js">
+
+  <script src="/assets/js/script.js"></script>
+  <script src="/assets/js/toggle.js"></script>
+
+  <script>
+    // Section navigation
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.content-section, #create-section').forEach(section => {
+        section.style.display = 'none'
+      })
+      
+      // Show selected section
+      const target = document.getElementById(sectionId)
+      if (target) {
+        target.style.display = 'block'
+      }
+      
+      // Update active nav link
+      document.querySelectorAll('#sidebar nav a').forEach(link => {
+        link.classList.remove('active')
+      })
+      event.target.closest('a')?.classList.add('active')
+    }
+    
+    // Clear vocabulary
+    function clearVocabulary() {
+      if (confirm('Are you sure you want to clear your entire vocabulary?')) {
+        localStorage.removeItem('pseudolingo_vocabulary')
+        updateDictionaryDisplay()
+      }
+    }
+    
+    // Decode word
+    function decodeWord() {
+      const input = document.getElementById('decode-input').value.trim().toLowerCase()
+      const resultDiv = document.getElementById('decode-result')
+      
+      if (!input) {
+        resultDiv.innerHTML = '<p class="error">Please enter a word to decode.</p>'
+        return
+      }
+      
+      const vocab = getVocabulary()
+      const matches = Object.values(vocab).filter(entry => 
+        entry.pseudo.toLowerCase() === input
+      )
+      
+      if (matches.length > 0) {
+        resultDiv.innerHTML = matches.map(match => `
+          <div class="decode-match">
+            <strong>${match.pseudo}</strong> = <em>${match.original}</em>
+            <span class="style-tag">${match.style}</span>
+          </div>
+        `).join('')
+      } else {
+        resultDiv.innerHTML = '<p class="no-match">No match found in your vocabulary.</p>'
+      }
+    }
   </script>
-  <script src="toggle.js"></script>
 </body>
 </html>
